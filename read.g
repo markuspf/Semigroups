@@ -93,6 +93,8 @@ ReadPackage("semigroups", "gap/congruences/congfpmon.gi");
 ReadPackage("semigroups", "gap/fp/freeinverse.gi");
 ReadPackage("semigroups", "gap/fp/freeband.gi");
 
+ReadPackage("semigroups", "gap/orbitalgraphs.gi");
+
 ReadPackage("semigroups", "gap/obsolete.gi");
 
 MakeReadOnlyGlobal("SEMIGROUPS");
