@@ -218,3 +218,20 @@ function(S, T)
 
   TryNextMethod();
 end);
+
+InstallMethod(AutomorphismGroup, "foe semigroups",
+              [IsSemigroup],
+function(S)
+    local T, ET, i, j, n;
+
+    n := Size(S);
+    T := MultiplicationTable(S);
+    ET := [];
+    for i in [1..n] do
+        for j in [1..n] do
+            Add(ET, [i,j,T[i,j]]);
+        od;
+    od;
+
+    return Solve([ConInGroup(SymmetricGroup(n)), ConStabilize(ET, OnSetsTuples)]);
+end);
