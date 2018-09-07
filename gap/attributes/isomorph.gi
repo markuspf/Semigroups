@@ -219,11 +219,12 @@ function(S, T)
   TryNextMethod();
 end);
 
-InstallMethod(AutomorphismGroup, "foe semigroups",
+InstallMethod(AutomorphismGroup, "for semigroups (via multiplication table)",
               [IsSemigroup],
 function(S)
-    local T, ET, i, j, n;
+    local T, ET, i, j, n, AutG, elms, genids, ggens;
 
+    elms := Elements(S);
     n := Size(S);
     T := MultiplicationTable(S);
     ET := [];
@@ -233,5 +234,15 @@ function(S)
         od;
     od;
 
-    return Solve([ConInGroup(SymmetricGroup(n)), ConStabilize(ET, OnSetsTuples)]);
+    AutG := Solve([ConInGroup(SymmetricGroup(n)), ConStabilize(ET, OnSetsTuples)]);
+    ggens := GeneratorsOfGroup(AutG);
+    return Group(List(ggens, g -> MappingByFunction(S, S, t -> Elements(S)[Position(Elements(S), t)^g])));
 end);
+
+# TODO: IsomorphismSemigroups by canonical images search
+
+# InstallMethod(AutomorphismGroup, "for semigroups (via Cayley graph)",
+#              [ IsSemigroup ],
+# function(S)
+#
+# end);
