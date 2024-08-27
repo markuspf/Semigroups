@@ -257,7 +257,7 @@ Persons := [
     IsAuthor      := true,
     IsMaintainer  := false,
     Email         := "markus.pfeiffer@morphism.de",
-    WWWHome       := "https://www.morphism.de/~markusp/"),
+    WWWHome       := "https://markusp.morphism.de/"),
 
   rec(
     LastName      := "Russell",
